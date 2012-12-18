@@ -55,7 +55,7 @@ def populate_incident_list(incident_file):
 
     Precondition: incident_file is a text file downloaded from MedTech's email
     client and is formatted such that each incident report is found between
-    two lines. These lines are 39 repititions of the pattern '=-' followed by
+    two lines. These lines are 39 repetitions of the pattern '=-' followed by
     one last '=' at the end.
     
     '''
