@@ -1,0 +1,48 @@
+002	La Puebla Healthcare Center	
+004	Flancaster Health Care Center	
+005	LaBon Health and Rehabilitation Center	
+006	Vanderpol Health Care Center	
+007	Blue Mountain Health and Rehabilitation Center	
+008	Thousand Bush Health Care Center
+009	Palm Tree Healthcare Center
+010	Bluetree Health & Rehab Care Center
+011	Sycamore Manor Health Care Center
+012	Florida Health & Rehabilitation Center
+015	River Bank East Health Care Center
+016	Chevy Healthcare Center
+017	Shady Hill Health Care Center
+018	Mountain Ridge Nursing & Rehab Center
+019	Geyser Village Care Center
+020	Bonzaitree Care Center 
+021	La Villa Poco Care Center
+022	Bantey Valley Rehabilitation & Care Center
+030	Eastridge Quality Care & Rehab
+350	Riverside of Simpson
+352	Riverside of Flanders
+353	Riverside of Bartshood
+354	Riverside of Homer
+355	Riverside of Lisaville
+356	Riverside of Bertburg
+357	Mountainside of Starcrafton
+358	Mountainside of Zerglingville
+359	Mountainside at Baneling Park (Lairsboro)
+361	Mountainside of Terranbase
+362	Mountainside of Bunkerstown
+363	Mountainside of Marine City
+364	Mountainside of Thorishere
+365	Mountainside of Barrackston
+366	Mountainside of Manor Nexus
+367	Mountainside of Pylon
+368	Mountainside of	Collosus
+369	Mountainside of Archon
+370	Mountainside of Templar City
+400	Felton Woods at Mount Olympus (SNF)	
+401	Zeus Park
+402	Forum at Hadestown
+403	Poseidon's Terrace	
+404	The Village at Hera Creek
+405	The Haven in the Village at Hermesville	
+407	River Styx Meadows	
+408	Nike Rock Sr. Living Community
+409	Hera's Manor
+410	Heracules Assisted Living	
