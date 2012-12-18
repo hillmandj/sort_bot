@@ -19,7 +19,7 @@ def get_facilities(facility_file):
     '''(file open for reading) -> dict
 
     Return a dictionary from data in facility_file where the keys are
-    equal to the facility_ids and the values are equal to the facility_names
+    equal to the facility_names and the values are equal to the facility_ids
     in the file. 
 
     Precondition: facility_file is a text file that is formatted such that
