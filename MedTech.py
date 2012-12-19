@@ -140,5 +140,7 @@ for alert in final_list:
 
 final_file.close()
 
+print('Sorting complete! Please open text file to see results.')
+
 #DONE!!!!!! Open the text file to see the results! :)
                  
