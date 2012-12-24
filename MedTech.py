@@ -1,4 +1,5 @@
 from tkinter.filedialog import askopenfile
+from datetime import datetime
 import re
 
 #The purpose of this program is to take a large number of incident reports in
@@ -96,7 +97,7 @@ def find_facility_name(incident):
 
 #The next step is to create a function that will allow us to extract the
 #date of the incident for each item in the list. We can use Regular expressions
-#to do this.
+#to do this as well. 
 
 def find_date_of_incident(incident):
     '''(str) -> str
@@ -113,7 +114,7 @@ def find_date_of_incident(incident):
     findPat2 = re.search(pattern, incident)
     incident_date = findPat2.group(1)
 
-    return incident_date
+    return datetime.strptime(incident_date, '%m/%d/%Y').strftime('%m/%d/%Y')
 
 #Now we have define our functions, we can  get the program started. The user
 #has to select the text file with all of the facilities and the text file
