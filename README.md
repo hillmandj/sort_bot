@@ -9,17 +9,15 @@ receive hundreds of incidents from the facilities we monitor. In order for us to
 each incident, at the end of the month someone at MedTech has to contact each facility and ask
 about what occurred. In order to make this easier on the person investigating, someone has
 to print out all of the incident reports sent to us via email from the facilities, number the 
-incident with the facility ID, and then sort all of the incidents by facility ID and date/time the email was received.
+incident with the facility ID, and then sort all of the incidents by facility ID and then by the date/time the email was received.
 
 This is a program I wrote that will parse the incident file (which is a text file downloaded
 from our email client containing all of the incident emails) and places the number code for
-the facility on top of each incident. It then writes all incidents where the Date of Incident is in the current month to one text file, and all incidents from prior months to another text file. This mmakes it easier for the people at MedTech to investigate each incident. 
-
+the facility on top of each incident. It then writes all incidents where the Date of Incident is in the current month to one text file, and all incidents from prior months to another text file (if there are no incidents from previous months, the final output for this file will be blank). This makes it easier for the people at MedTech to investigate each incident.
 
 I've added a (fake) facility_file and incident_file in order for you to see how this works. I had 
 to do this because  the real names of MedTech facilities and incidents are private and 
-confidential. I've also included a write_here file, which is simply a blank text file for you to 
-write to.
+confidential.
 
 This program is meant to be run in Python 3.3 and does not work in previous versions of Python.
 
