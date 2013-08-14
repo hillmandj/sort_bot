@@ -23,16 +23,21 @@ This program is meant to be run in Python 3.3 and does not work in previous vers
 
 To run the program:
 
-1. Create two blank text files to write to (one for incidents that happened this month, the other for incidents that occured in prior months)
-2. Run the program in the Python Shell
-3. Input what month the incident emails you're interested in sorting was received
-4. Input the year the incident emails you're interested in sorting was received
-5. Select a text files you created earlier in order to write to them when prompted
-6. Program completes, you can view the results by double clicking the html files that are automatically created. These files were originally the blank text files you created.
+1. Run the program in the Python Shell
+2. Input what month the incident emails you're interested in sorting were received
+3. Input the year the incident emails you're interested in sorting were received
+4. Choose a name for the file that will contain this month's sorted alerts.
+5. Choose a name for the file that will contain prior month's sorted alerts.
+6. Program completes, you can view the results by double clicking the html files that are automatically created.
+7. If the program encounters an email where the name of the facility is spelled slightly differently, or if there is a new facility, the user will be alerted to add that to the facility file. The exact spelling of the name as it appears in the email will be provided.
 
-Ways I intend to make this program better in upcoming versions:
-- Automatically generate output files
-- Implement exception handling
+IMPORTANT NOTE: The default/initial directory in the calls to asksaveasfile are currently the path to the Desktop for MedTech's designated sort_bot computer. These values must be changed if you are going to run the script on your own computer.
+
+Ways I intend to improve this program:
+
+-Add a way to merge previous outputs of sort_bot to generate one large file. This is important because this program was originally designed to be executed monthly, after we received all the alerts for the month. However, since we are able to process alerts faster using sort_bot, we now process alerts weekly or even less. This means that occasionally, someone has to hand-sort previous outputs of sort_bot with newer ones. Though this is much easier to do, since both outputs are already sorted by facility ID and date received, it would be much better to be able to select a number of files, extract content, and re-sort. 
+
+-Update exception handling to automatically add new facility name values to the facility file if encountered. The only required input from the user following this would be the Facility ID number associated with that facility name.
 
 Thanks for checking out my program!
 
