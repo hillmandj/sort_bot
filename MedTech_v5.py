@@ -1,4 +1,4 @@
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askopenfile, asksaveasfile
 from datetime import datetime
 import re
 import os
@@ -47,13 +47,8 @@ def populate_incident_list(incident_file):
         incident.strip()
         if len(incident) > 0:
             master_list.append(incident)
-    for i in master_list:
-        if i == '\n\n':
-            master_list.remove(i)
-        if i == '\n':
-            master_list.remove(i)
 
-    return master_list
+    return filter(lambda x: x.strip() != '', master_list)
 
 
 def find_facility_name(incident):
@@ -138,17 +133,12 @@ def boolComments(incident):
 
     '''
 
-    Comment = None
     pattern = re.compile(r'MedTech Comments:')
     findPat4 = re.search(pattern, incident)
     if findPat4 == None:
-        Comment = False
+        return False
     else:
-        med_com = findPat4.group()
-        Comment = True
-
-    return Comment
-
+        return True
 
 def renamePath(file_obj):
     '''(closed_file.txt) -> (closed_file.html)
@@ -170,7 +160,7 @@ def Run():
     no_var = ['No', 'NO', 'n', 'N']
 
     facility_file = open('facilityList.txt', 'r')
-    incident_file = askopenfile(mode='r', title='Please select an incident file!')
+    incident_file = askopenfile(mode='r', initialdir="C:/Documents and Settings/medinc.LGBS/Desktop", title='Please select an incident file!')
     d = get_facilities(facility_file)
     incident_list = populate_incident_list(incident_file)
     
@@ -186,16 +176,16 @@ def Run():
         
     final_list.sort(key=lambda i: (i[15:18], find_DS_forSort(i)))
 
-    date_of_incident_before_m = []
-
-    for alert in final_list:
-        if find_date_of_incident(alert)[0:2] != m:
-            date_of_incident_before_m.append(alert)
+    date_of_incident_before_m = [alert for alert in final_list if find_date_of_incident(alert)[0:2] != m]
 
     new_final_list = list(filter(lambda alert: find_date_of_incident(alert)[0:2] == m, final_list)) 
     
-    final_file = askopenfile(mode='w', title='Please select a text file to write this month\'s DOIs\'s to!')
-    prior_file = askopenfile(mode='w', title='Please select a text file to write prior month\'s DOIs\'s to!')
+    final_file = asksaveasfile(mode='w', defaultextension=".html", filetypes=(("HTML file", "*.html"),("All Files", "*.*")),
+                               initialdir="C:/Documents and Settings/medinc.LGBS/Desktop",
+                               title='Please choose a name for the file with this month\'s DOIs!')
+    prior_file = asksaveasfile(mode='w', defaultextension=".html", filetypes=(("HTML file", "*.html"),("All Files", "*.*")),
+                               initialdir="C:/Documents and Settings/medinc.LGBS/Desktop",
+                               title='Please choose a name for the file with prior month\'s DOIs!')
 
     html_styling = ('<html>' + '<head>' + '<style>' + 'hr { page-break-before: always;}' + '''pre {
     white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap;
@@ -208,9 +198,8 @@ def Run():
                          cgi.escape(alert) + '</font>' + '</pre>' + '<hr>')    
 
     final_file.write('</body>' + '</html>')
-
     final_file.close()
-
+    
     prior_file.write(html_styling)
 
     for alert in date_of_incident_before_m:
@@ -218,15 +207,21 @@ def Run():
                          cgi.escape(alert) + '</font>' + '</pre>' + '<hr>')
 
     prior_file.write('</body>' + '</html>')
-
     prior_file.close()
-
-    renamePath(final_file)
-
-    renamePath (prior_file)
 
     print('Sorting complete! Please open html files to see results.')
 
-Run()
+if __name__ == '__main__':
+    try:
+        Run()
+    except KeyError as e:
+        warning = ('There is an email with a Facility Name that is not listed in the Facility File, '
+                   'This can occur when FiveStar sends us an alert with a slightly different spelling of the facility name. '
+                   'Please add the name and Facility number to the facility file located in the sort_bot directory. '
+                   'The exact way the facility name appears in the email is: ')
+        print('\n'+ warning + str(e))
+        input('Hit Enter to Exit Terminal Window.')
+else:
+    print('Module imported')
 
                  
